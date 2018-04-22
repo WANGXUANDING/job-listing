@@ -1,21 +1,24 @@
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("add a job",new_job_path, class: "btn btn-primary pull right") %>
+    <%= link_to("add a job",new_job_path, class: "btn btn-primary pull-right") %>
   </div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <td> name </td>
+        <th> name </th>
+        <th></th>
+        <th> created_at</th>
       </tr>
     </thead>
     <tbody>
       <% @jobs.each do |job| %>
         <tr>
-          <td><%= link_to(job.name,job_path(job)) %></td>
+          <td><%= link_to(job.title,job_path(job)) %></td>
           <td>
             <%= link_to("Edit", edit_job_path(job), class: "btn btn-sm btn-default") %>
             <%= link_to("Delete", job_path(job), class: "btn btn-sm btn-default", method: :delete,
              data: {confirm: "sure?"} ) %>
+            <td><%= job.created_at %></td>
           </td>
         </tr>
       <% end %>
